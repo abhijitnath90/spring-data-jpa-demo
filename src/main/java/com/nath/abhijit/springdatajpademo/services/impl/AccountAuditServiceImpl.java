@@ -17,6 +17,7 @@ public class AccountAuditServiceImpl implements AccountAuditService {
 
     @Override
     public List<AccountAudit> getAuditLogs(String accountId, Date fromDate, Date toDate) {
-       return accountAuditRepository.findByAccountIdAndLastUpdateDateGreaterThanAndLastUpdateDateLessThan(accountId, fromDate, toDate);
+       return accountAuditRepository.findByAccountIdAndLastUpdateDateGreaterThanAndLastUpdateDateLessThan(accountId, new java.sql.Date(fromDate.getTime()), new java.sql.Date(toDate.getTime()));
     }
+    
 }
